@@ -9,15 +9,6 @@ input#file-upload-button{
 .bg-sidebar,.dark\:bg-gray-800{
     background:#ffffff !important;
 }
-/* .active span{
-    color:#000000 !important;
-}
-.active span:hover{
-    color:#ffffff !important;
-}
-.nav-link span{
-    color: #ffffff !important;
-} */
 
 .background-space::before{
     position:absolute;

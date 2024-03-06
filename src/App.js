@@ -1,4 +1,3 @@
-
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -13,78 +12,46 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { useSelector } from "react-redux";
-import MerchantDetails from "./components/MerchantDetails";
-import PosAppStatus from "./components/PosAppStatus";
-import PosMachine from "./components/PosMachine";
-import Terminal from "./components/Terminal";
-import Task from "./components/Task";
-import Branch from "./components/Branch";
-import AllocateTerminal from "./components/AllocateTerminal";
-import Activities from "./components/Activities";
-import Portfolio from "./components/Portfolio";
-import Merchants from "./pages/Merchants";
-import TerminalsPage from "./pages/TerminalsPage";
-import DevicesPage from "./pages/DevicesPage";
-import TasksPage from "./pages/TasksPage";
-import ActivitiesPage from "./pages/Activities";
+
+import MyCalendar from "./pages/MyCalendar";
+import AddEvent from "./components/AddEvent";
+import Events from "./pages/Events";
+import EditDetails from "./components/EditDetails";
+
 
 function App() {
-  
-  const [authToken, setIsAuthToken] = useState("");
+  const [authToken, setIsAuthToken] = useState(false);
+  const { user } = useSelector((state) => state.auth);
 
-  const { user } = useSelector(state => state.auth)
-  
-  
   useEffect(() => {
     setIsAuthToken(user);
-  },[user])
-
-  useEffect(() => {
-    let mytoken = localStorage.getItem("user");
-    setIsAuthToken(mytoken)
-  },[])
+  }, [user]);
   return (
     <>
-      <Router basename="/">
-        {/* <MerchantDetails /> 
-        <PosAppStatus />
-        <PosMachine />
-        <Terminal />
-        <Task />
-  <Branch />
-  <AllocateTerminal />
-        <Activities />*/}
-        {/* <Portfolio /> */}
-
+      <Router>
         <Routes>
           {authToken ? (
             <>
+              {/* Logged in routes  */}
               <Route path="/" element={<Dashboard />}>
-                <Route path="merchants" element={<Merchants />} />
-                <Route path="merchants/add" element={<MerchantDetails />} />
-                <Route path="terminals" element={<TerminalsPage />} />
-                <Route path="terminals/add" element={<Terminal />} />
-                <Route path="devices" element={<DevicesPage />} />
-                <Route path="devices/add" element={<PosMachine />} />
-                <Route path="tasks" element={<TasksPage />} />
-                <Route path="tasks/add" element={<Task />} />
-                <Route path="activities" element={<ActivitiesPage />} />
-                <Route path="activities/add" element={<Activities />} />
-
-                {/* <Route path="tasks" element={<DashboardTasks />} /> */}
+                <Route path="events" element={<Events />} />
+                <Route path="events/add" element={<AddEvent />} />
+                <Route path="events/edit/:id" element={<EditDetails />} />
+                <Route path="calendar" element={<MyCalendar />} />
               </Route>
             </>
           ) : (
             <>
+              {/* logged out routes  */}
               <Route element={<Register />} exact path="/register" />
               <Route element={<Login />} exact path="/login" />
             </>
           )}
 
-          {/* <Route
+          <Route
             path="*"
-            element={<Navigate to={!authToken ? "/login" : "/"} />}
-          /> */}
+            element={<Navigate to={!authToken ? "/login" : "/events"} />}
+          />
         </Routes>
       </Router>
       <ToastContainer />

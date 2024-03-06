@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { register, reset } from "../redux/authSlice";
+import { reset } from "../redux/authSlice";
 import { toast } from "react-toastify";
 
 export default function Register() {
@@ -29,16 +29,15 @@ export default function Register() {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message)
+      toast.error(message);
     }
     if (isSuccess) {
       // toast.success(message)
-      navigate("/login")
-      toast.success("Registered Successifully")
-      
+      navigate("/login");
+      toast.success("Registered Successifully");
     }
 
-    dispatch(reset())
+    dispatch(reset());
   }, [user, isError, message, isSuccess, navigate, dispatch]);
 
   const handleSubmit = (e) => {
@@ -46,28 +45,24 @@ export default function Register() {
     if (data.password !== data.confirmPassword) {
       toast.error("Passwords do not match");
     } else {
-      const userData = {
-        username: data.username,
-        user_email: data.user_email,
-        password: data.password,
-      };
-      dispatch(register(userData))
+     
+      
     }
   };
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
   return (
-    <div>
-      <div className="bg-gray-100 p-5 max-w-[500px] rounded-lg w-[90%] md:w-[50%] block mt-10 m-auto">
-        <h1 class="text-3xl text-center mb-5 font-bold">Register</h1>
+    <div className="flex items-center justify-center h-[100vh]">
+      <div className="bg-mint-cream shadow-lg p-5 max-w-[500px] rounded-lg w-[90%] md:w-[50%] block m-auto">
+        <h1 className="text-3xl text-center mb-5 font-bold">Register</h1>
 
         <form onSubmit={handleSubmit}>
-          <div class="mb-5">
+          <div className="mb-5">
             <label
-              for="title"
-              class="block mb-2 text-sm font-medium text-gray-900 "
+              htmlFor="title"
+              className="block mb-2 text-sm font-medium text-gray-900 "
             >
               Username
             </label>
@@ -77,15 +72,15 @@ export default function Register() {
               value={data.username}
               id="username"
               name="username"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
               placeholder="Your Username..."
               required
             />
           </div>
-          <div class="mb-5">
+          <div className="mb-5">
             <label
-              for="title"
-              class="block mb-2 text-sm font-medium text-gray-900 "
+              htmlFor="title"
+              className="block mb-2 text-sm font-medium text-gray-900 "
             >
               Email
             </label>
@@ -95,15 +90,15 @@ export default function Register() {
               value={data.user_email}
               id="email"
               name="user_email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
               placeholder="Your Email..."
               required
             />
           </div>
-          <div class="mb-5">
+          <div className="mb-5">
             <label
-              for="title"
-              class="block mb-2 text-sm font-medium text-gray-900 "
+              htmlFor="title"
+              className="block mb-2 text-sm font-medium text-gray-900 "
             >
               Password
             </label>
@@ -113,16 +108,16 @@ export default function Register() {
               value={data.password}
               id="password"
               name="password"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
               placeholder="Your Password..."
               required
             />
           </div>
 
-          <div class="mb-5">
+          <div className="mb-5">
             <label
-              for="title"
-              class="block mb-2 text-sm font-medium text-gray-900 "
+              htmlFor="title"
+              className="block mb-2 text-sm font-medium text-gray-900 "
             >
               Confirm Password
             </label>
@@ -132,7 +127,7 @@ export default function Register() {
               value={data.confirmPassword}
               id="email"
               name="confirmPassword"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
               placeholder="Re-enter Your Password"
               required
             />
@@ -140,14 +135,14 @@ export default function Register() {
 
           <button
             type="submit"
-            className="bg-black w-full p-2.5 text-white rounded-lg"
+            className="bg-black w-full p-2.5 text-mint-cream rounded-lg"
           >
             Sign Up
           </button>
         </form>
         <p className="text-center mt-4">
           Already Have an Account?{" "}
-          <Link to="/login" className="text-blue-400">
+          <Link to="/login" className="text-royal-blue">
             Login
           </Link>
         </p>
