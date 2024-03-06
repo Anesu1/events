@@ -81,7 +81,7 @@ export default function Dashboard() {
                   onClick={() => setIsSidebarOpen(false)}
                   className={({ isActive }) => {
                     return isActive
-                      ? "active bg-gray-500 text-white flex items-center p-2 text-base font-normal  bg-black text-mint-cream rounded-lg hover:bg-gray-500 hover:text-white transition  group"
+                      ? "active bg-gray-500 text-white flex items-center p-2 text-base font-normal  bg-black rounded-lg hover:bg-gray-500 hover:text-white transition  group"
                       : "text-gray-800 flex items-center p-2 text-base font-normal  rounded-lg hover:bg-gray hover:text-[#ffffff] transition  group";
                   }}
                 >
@@ -94,7 +94,7 @@ export default function Dashboard() {
                   onClick={() => setIsSidebarOpen(false)}
                   className={({ isActive }) => {
                     return isActive
-                      ? "active bg-gray-500 text-white flex items-center p-2 text-base font-normal bg-black text-mint-cream rounded-lg hover:bg-gray-500 hover:text-white transition  group"
+                      ? "active bg-gray-500 text-white flex items-center p-2 text-base font-normal bg-black rounded-lg hover:bg-gray-500 hover:text-white transition  group"
                       : "text-gray-800 flex items-center p-2 text-base font-normal  rounded-lg hover:bg-gray hover:text-[#ffffff] transition  group";
                   }}
                 >

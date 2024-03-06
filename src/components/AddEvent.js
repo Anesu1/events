@@ -3,9 +3,8 @@ import Input from "../styled/Input";
 import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
-import { addEvent } from "../redux/EventSlice";
+import { addEvent, reset } from "../redux/eventSlice";
 import { toast } from "react-toastify";
-import { reset } from "../redux/EventSlice";
 
 export default function AddEvent() {
   const [data, setData] = useState({

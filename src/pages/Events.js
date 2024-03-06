@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineAdd } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { deleteEvent } from "../redux/EventSlice";
+import { deleteEvent } from "../redux/eventSlice";
 
 export default function Events() {
 
@@ -75,7 +75,7 @@ export default function Events() {
               <Link
                 type="button"
                 to="/events/add"
-                className="flex items-center justify-center text-white bg-grape text-mint-cream hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2"
+                className="flex items-center justify-center text-white bg-grape hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2"
               >
                 <MdOutlineAdd />
                 Add event
